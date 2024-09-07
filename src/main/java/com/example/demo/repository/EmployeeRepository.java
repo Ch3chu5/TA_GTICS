@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EmployeeRepository {
+    /*
     public ArrayList<Employee> findAll() {
 
         ArrayList<Employee> listaEmpleados = new ArrayList<>();
@@ -41,4 +42,5 @@ public class EmployeeRepository {
         }
         return flag;
     }
+     */
 }

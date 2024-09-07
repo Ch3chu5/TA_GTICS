@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class EmployeesController {
+    /*
     private Employee employees = new Employee();
     private Job jobs = new Job();
 
@@ -33,4 +34,5 @@ public class EmployeesController {
 //        COMPLETAR
         return "XXXXXX";
     }
+    */
 }
