@@ -17,6 +17,8 @@
             <th>Correo</th>
             <th>Departamento</th>
             <th>Ciudad</th>
+            <th>Borrar</th>
+            <th>Editar</th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +28,8 @@
             <td th:text="${employee.getEmail()}"></td>
            <td th:text="${employee.getDepartment().getDepartment_name()}"></td>
             <td th:text="${employee.getDepartment().getLocation().getCity()}"></td>
+            <td><button class="btn btn-edit" >Editar</button></td>
+            <td><button class="btn btn-delete">Borrar</button></td>
         </tr>
         </tbody>
     </table>
