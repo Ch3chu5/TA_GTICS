@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.example.demo.entity.Employee;
@@ -37,12 +38,20 @@ public class EmployeesController {
 
         return "listaEmpleados";
     }
-/*
-    @GetMapping("employee/info/{id}")
-    public String info(@PathVariable("id") Long id, Model model) {
 
+    @GetMapping("employee/info/{id}")
+    public String informEmployee(@PathVariable("id") Integer employeeId, Model model) {
+        Optional<Employee> oEmployee = employeeRepository.findById(employeeId);
+        if(oEmployee.isPresent()) {
+            Employee employee = oEmployee.get();
+            model.addAttribute("employee", employee);
+            model.addAttribute("selectedJobId",employee.getJob().getJob_id());
+        }
+        List<Job> listaJob = jobRepository.findAll();
+        model.addAttribute("jobList", listaJob);
+        return "inforEmpleado";
     }
- */
+
 
 /*
     private Employee employees = new Employee();
