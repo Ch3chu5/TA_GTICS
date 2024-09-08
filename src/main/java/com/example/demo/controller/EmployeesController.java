@@ -52,6 +52,13 @@ public class EmployeesController {
         return "inforEmpleado";
     }
 
+    @GetMapping("employee/info/{id}")
+    public void borrarEmployee(@PathVariable("id") Integer employeeId, Model model) {
+        Optional<Employee> oEmployee = employeeRepository.findById(employeeId);
+
+
+    }
+
 
 /*
     private Employee employees = new Employee();
