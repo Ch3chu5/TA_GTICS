@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Getter
 @Setter
 @Table(name="employees")
@@ -21,10 +22,17 @@ public class Employee {
 
     @Column(name="email",length = 25)
     private String email;
+    //Many to one es para relacionar con otras entidades
 
-    @Column(name="job_id",nullable = false)
-    private Integer job_id;
+    @ManyToOne
+    @JoinColumn(name="job_id")
+    private Job job;
 
-    @Column(name="department_id")
-    private Integer department_id;
+
+
+    @ManyToOne
+    @JoinColumn(name="department_id")
+    private Department department;
+
+
 }
