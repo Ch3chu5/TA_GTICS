@@ -1,71 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet"
-              href="/../resources/bootstrap/css/bootstrap.css"/>
-        <!-- OPENICONIC CSS -->
-        <link rel="stylesheet"
-              href="/../resources/open-iconic/css/open-iconic-bootstrap.css">
-
-        <title>Lista de Empleados</title>
-    </head>
-    <body>
-    <h1>Lista de Empleados</h1>
-
-    <c:if test="${msg != null}" >
-        <div class="alert alert-${tipo_alert} alert-dismissible fade show" role="alert">
-            ${msg}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </c:if>
-    <table class="table table-striped">
-        <thead>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de empleados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container my-5">
+    <h1 class="text-center mb-4">Lista de Empleados</h1>
+    <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark">
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Apellido y Nombre</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th>#</th>
+            <th>Apellido y Nombre</th>
+            <th>Correo</th>
+            <th>Departamento</th>
+            <th>Ciudad</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>Higgins, Shelley</td>
-            <td>shiggins@company.com</td>
-            <td>
-                <h5><span class="badge badge-dark">
-                            Accounting
-                                </span></h5>
-            </td>
-            <td>Seattle</td>
-            <td><a class="btn btn-outline-info" href="/Lab3-STW2-2019-1/employee/info/205" data-toggle="tooltip" data-placement="bottom" title="Editar"><span class="oi oi-pencil"></span></a></td>
-            <td><a class="btn btn-outline-danger" href="/Lab3-STW2-2019-1/employee/delete/205" data-toggle="tooltip" data-placement="bottom" title="Borrar"><span class="oi oi-trash"></span></a></td>
-        </tr>
-
-        <tr>
-            <td>2</td>
-            <td>Whalen, Jennifer</td>
-            <td>jwhalen@company.com</td>
-            <td>
-                <h5><span class="badge badge-dark">
-                            Administration
-                                </span></h5>
-            </td>
-            <td>Seattle</td>
-            <td><a class="btn btn-outline-info" href="/Lab3-STW2-2019-1/employee/info/200" data-toggle="tooltip" data-placement="bottom" title="Editar"><span class="oi oi-pencil"></span></a></td>
-            <td><a class="btn btn-outline-danger" href="/Lab3-STW2-2019-1/employee/delete/200" data-toggle="tooltip" data-placement="bottom" title="Borrar"><span class="oi oi-trash"></span></a></td>
+        <tr th:each="employee, info : ${employeesList}">
+            <td th:text="${info.index + 1}"></td>
+            <td th:text="${employee.last_name + ', ' + employee.first_name}"></td>
+            <td th:text="${employee.getEmail()}"></td>
+           <td th:text="${employee.getDepartment().getDepartment_name()}"></td>
+            <td>-</td>
         </tr>
         </tbody>
     </table>
-    <script src="/../resources/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/../resources/bootstrap/js/bootstrap.min.js"></script>
-    </body>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
