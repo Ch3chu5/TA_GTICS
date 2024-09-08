@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -52,11 +53,25 @@ public class EmployeesController {
         return "inforEmpleado";
     }
 
-    @GetMapping("employee/info/{id}")
-    public void borrarEmployee(@PathVariable("id") Integer employeeId, Model model) {
-        Optional<Employee> oEmployee = employeeRepository.findById(employeeId);
+    @GetMapping("employee/delete/{id}")
+    public String borrarEmployee(@PathVariable("id") Integer employeeId, Model model) {
+        Optional<Employee> employeeXDDD = employeeRepository.findById(employeeId);
+        List<Employee> listaEmployee = employeeRepository.findAll();
 
-
+        if (employeeXDDD.isPresent()) {
+            try {
+                employeeRepository.deleteById(employeeId);
+            } catch (Exception e) {
+                model.addAttribute("employeesList", listaEmployee);
+                model.addAttribute("errorMessage", "El empleado no puede ser borrado porque tiene relaciones dependientes.");
+                return "listaEmpleados";
+            }
+        } else {
+            model.addAttribute("employeesList", listaEmployee);
+            model.addAttribute("errorMessage", "El empleado no existe.");
+            return "listaEmpleados";
+        }
+        return "redirect:/employee";
     }
 
 

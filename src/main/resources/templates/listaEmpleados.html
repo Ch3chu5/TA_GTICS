@@ -9,6 +9,12 @@
 <body>
 <div class="container my-5">
     <h1 class="text-center mb-4">Lista de Empleados</h1>
+
+    <!-- Mensaje de error -->
+    <div th:if="${errorMessage != null}" class="alert alert-danger" role="alert">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
     <table class="table table-striped table-hover table-bordered align-middle">
         <thead class="table-dark">
         <tr>
@@ -26,10 +32,10 @@
             <td th:text="${info.index + 1}"></td>
             <td th:text="${employee.last_name + ', ' + employee.first_name}"></td>
             <td th:text="${employee.getEmail()}"></td>
-           <td th:text="${employee.getDepartment().getDepartment_name()}"></td>
+            <td th:text="${employee.getDepartment().getDepartment_name()}"></td>
             <td th:text="${employee.getDepartment().getLocation().getCity()}"></td>
-            <td><a class="btn btn-edit" th:href="@{/employee/info/{id}(id=${employee.employee_id})}" >Ver</a></td>
-            <td><button class="btn btn-delete">Borrar</button></td>
+            <td><a class="btn btn-view btn-primary" th:href="@{/employee/info/{id}(id=${employee.employee_id})}">Ver</a></td>
+            <td><a class="btn btn-delete btn-danger" th:href="@{/employee/delete/{id}(id=${employee.employee_id})}">Borrar</a></td>
         </tr>
         </tbody>
     </table>
