@@ -11,7 +11,7 @@ import lombok.Setter;
 @Table(name="locations")
 public class Location {
     @Id
-    @Column(name="locations_id", nullable=false)
+    @Column(name="location_id", nullable=false)
     private Integer location_id;
 
     @Column(name="city",nullable=false,length=30)

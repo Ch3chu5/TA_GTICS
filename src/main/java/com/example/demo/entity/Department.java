@@ -16,10 +16,10 @@ public class Department{
 
     @Column(name="department_name",nullable=false,length=30)
     private String department_name;
-    /*
+
     @ManyToOne
     @JoinColumn(name="location_id")
     private Location location;
 
-     */
+
 }

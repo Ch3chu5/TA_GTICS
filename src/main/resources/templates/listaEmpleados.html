@@ -25,7 +25,7 @@
             <td th:text="${employee.last_name + ', ' + employee.first_name}"></td>
             <td th:text="${employee.getEmail()}"></td>
            <td th:text="${employee.getDepartment().getDepartment_name()}"></td>
-            <td>-</td>
+            <td th:text="${employee.getDepartment().getLocation().getCity()}"></td>
         </tr>
         </tbody>
     </table>

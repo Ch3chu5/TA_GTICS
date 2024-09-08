@@ -32,10 +32,6 @@ public class EmployeesController {
     public String listarEmployees(Model model) {
 
         List<Employee> listaEmployee = employeeRepository.findAll();
-        for(Employee employee : listaEmployee) {
-            System.out.println("email  " + employee.getEmail());
-        }
-
         model.addAttribute("employeesList", listaEmployee);
 
 
